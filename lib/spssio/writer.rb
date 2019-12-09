@@ -44,7 +44,7 @@ module SPSS
       API.close_write(handle)
     end
 
-    def create_variable(name, label, size: 0)
+    def create_variable(name, size: 0)
       API.set_var_name(handle, name, size)
 
       yield variables[name] if block_given?
@@ -57,7 +57,7 @@ module SPSS
     end
 
     def add_attribute(name, attribute, value)
-      API.set_var_attributes(handle, name, [attribute])
+      API.set_var_attributes(handle, name, [[attribute, value]])
 
       yield variables[name] if block_given?
     end
