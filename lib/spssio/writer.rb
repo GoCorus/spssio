@@ -44,7 +44,7 @@ module SPSS
       API.close_write(handle)
     end
 
-    def create_variable(name, size: 0)
+    def create_variable(name, size = 10)
       API.set_var_name(handle, name, size)
 
       yield variables[name] if block_given?
@@ -66,6 +66,28 @@ module SPSS
       API.set_var_write_format(handle, name, format, format, format)
 
       yield variables[name] if block_given?
+    end
+
+    def write_char(attr, data)
+      pointer = API.get_var_handle(handle, attr)
+      API.set_value_char(handle, pointer, data)
+    end
+
+    def write_numeric(attr, data)
+      pointer = API.get_var_handle(handle, attr)
+      API.set_value_numeric(handle, pointer, data)
+    end
+
+    def commit_case_record
+      API.commit_case_record(handle)
+    end
+
+    def write_record(record)
+      record.each do |key, val|
+        write_char(key, var)
+      end
+
+      commit_case_record
     end
 
     def commit_header
