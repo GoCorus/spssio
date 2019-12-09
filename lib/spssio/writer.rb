@@ -63,7 +63,7 @@ module SPSS
     end
 
     def set_write_format(name, format)
-      set_var_write_format(handle, name, format, format, format)
+      API.set_var_write_format(handle, name, format, format, format)
 
       yield variables[name] if block_given?
     end
