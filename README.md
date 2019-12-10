@@ -1,3 +1,7 @@
+fork from
+https://github.com/mercuryanalytics/spssio
+
+
 # SPSSIO library for Ruby
 
 This project uses FFI to provide a Ruby interface to the IBM SPSS Statistics Input/Output Module,
