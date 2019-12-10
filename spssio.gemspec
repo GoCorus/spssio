@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name = "spssio"
   s.summary = "Ruby bindings for spssdio"
   s.version = "0.1.0"
-  s.author = "Scott Brickner"
+  s.author = "..."
   s.files = [
     "lib/spssio.rb",
     "bin/change_install_names.rb",
@@ -16,12 +16,11 @@ Gem::Specification.new do |s|
   ] + Dir["ext/**/*"]
 
   s.description = "Ruby bindings for IBM SPSS Statistics Input/Output Module"
-  s.email = "scottb@brickner.net"
-  # s.homepage = ""
-  # s.license = "MIT"
+  s.email = "..."
+  s.homepage = "cor.us"
   # s.licenses = ?
   # s.metadata = ?
-  s.date = "2019-02-05"
+  s.date = "2019-12-10"
 
   s.add_development_dependency "rspec", "~> 0"
   s.add_runtime_dependency "ffi", "~> 1.0"
