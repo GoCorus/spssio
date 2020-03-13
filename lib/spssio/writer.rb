@@ -47,12 +47,40 @@ module SPSS
       API.set_value_numeric(handle, pointer, data)
     end
 
+    def spss_time(day, hour, minute, second)
+      API.convert_time(day, hour, minute, second)
+    end
+
+    def spss_date(day, month, year)
+      API.convert_date(day, month, year)
+    end
+
     def write_record(record)
-      record.each do |key, val|
-        write_char(key, val)
+      record.each do |item|
+        if item[:type] == 'string'
+          write_char(item[:key], item[:val])
+        elsif item[:type] == 'numeric'
+          write_numeric(item[:key], item[:val])
+        end
       end
 
       commit_case_record
+    end
+
+    def set_var_write_format(var_name, write_type, write_dec, write_wid)
+      API.set_var_write_format(handle, var_name, write_type, write_dec, write_wid)
+    end
+
+    def set_var_print_format(var_name, print_type, print_dec, print_wid)
+      API.set_var_print_format(handle, var_name, print_type, print_dec, print_wid)
+    end
+
+    def get_var_write_format(var_name)
+      API.get_var_write_format(handle, var_name)
+    end
+
+    def get_var_print_format(var_name)
+      API.get_var_print_format(handle, var_name)
     end
 
     def commit_header
