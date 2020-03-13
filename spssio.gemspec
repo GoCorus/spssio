@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
 
   s.description = "Ruby bindings for IBM SPSS Statistics Input/Output Module"
   s.email = "..."
-  s.homepage = "cor.us"
   # s.licenses = ?
   # s.metadata = ?
   s.date = "2019-12-10"
